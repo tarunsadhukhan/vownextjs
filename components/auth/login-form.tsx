@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils"
 import { Loader2 } from "lucide-react"
 
 const formSchema = z.object({
-  email: z.string().email("Invalid email address"),
+  username: z.string().min(1,"user name must be 1 charecter"),
   password: z.string().min(6, "Password must be at least 6 characters"),
   rememberMe: z.boolean().default(false),
 })
@@ -30,7 +30,7 @@ export function LoginForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
       rememberMe: false,
     },
@@ -71,10 +71,10 @@ export function LoginForm() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
             control={form.control}
-            name="email"
+            name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>User Name</FormLabel>
                 <FormControl>
                   <Input placeholder="STPL063" {...field} />
                 </FormControl>
