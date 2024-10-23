@@ -7,7 +7,7 @@ export default function Home() {
       {/* Left side - Welcome Image */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-emerald-800 to-teal-600 p-12 relative">
         <div className="max-w-2xl mx-auto text-white space-y-8">
-          <h1 className="text-4xl font-bold">Nice to meet you</h1>
+          <h1 className="text-4xl font-bold"> want to Nice to meet you</h1>
           <h2 className="text-6xl font-bold">WELCOME</h2>
           <p className="text-xl">
             We have customized this product according to your needs and can&apos;t wait to see you using this product. This will simplify working of your business
