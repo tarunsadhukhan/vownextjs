@@ -6,11 +6,11 @@ const prisma = new PrismaClient()
 
 export async function POST(request: Request) {
   try {
-    const { email, password } = await request.json()
+    const { username, password } = await request.json()
 
     const user = await prisma.user.findUnique({
-      where: { email },
-    })
+      where: { username },
+    }) 
 
     if (!user) {
       return NextResponse.json(

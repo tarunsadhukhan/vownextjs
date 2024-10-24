@@ -24,6 +24,8 @@ const formSchema = z.object({
   rememberMe: z.boolean().default(false),
 })
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
+
 export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false)
 
@@ -39,16 +41,19 @@ export function LoginForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch(`${API_URL}/api/authRoutes/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       })
       
       if (!response.ok) {
-        throw new Error("Login failed")
+        throw new Error(data.error || "Login failed")
       }
-      
+
+          // Store user data in localStorage
+          localStorage.setItem("user", JSON.stringify(data.user))
+
       // Handle successful login
       window.location.href = "/dashboard"
     } catch (error) {
